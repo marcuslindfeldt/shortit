@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+import RedirectUrl from './RedirectUrl';
 
 import CreateLink from './CreateLink';
 import ShowUrl from './ShowUrl';
 import LinkList from './LinkList';
 // import Link from './Link';
-import TinyUrls from './TinyUrls';
 
 class App extends Component {
   render() {
     return (
-      <TinyUrls>
-        <>
-          <CreateLink />
-          <ShowUrl />
-          <LinkList />
-        </>
-      </TinyUrls>
+      <Switch>
+        <Route path="/" exact>
+          <>
+            <CreateLink />
+            <ShowUrl />
+            <LinkList />
+          </>
+        </Route>
+        <Route path="/:id" component={RedirectUrl} />
+      </Switch>
     );
   }
 }

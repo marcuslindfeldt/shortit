@@ -7,7 +7,11 @@ class ShowUrl extends Component {
     return (
       <TinyUrlContext.Consumer>
         {({ newLink }) =>
-          newLink ? <a href={constructUrl(newLink.id)}>{constructUrl(newLink.id)}</a> : null
+          newLink ? (
+            <a href={constructUrl(newLink.id)} target="_blank" rel="noopener noreferrer">
+              {constructUrl(newLink.id)}
+            </a>
+          ) : null
         }
       </TinyUrlContext.Consumer>
     );

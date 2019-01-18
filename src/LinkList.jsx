@@ -10,7 +10,9 @@ const LinkList = () => (
         <ul>
           {recentLinks.map(link => (
             <li key={link.id}>
-              <a href={constructUrl(link.id)}>{constructUrl(link.id)}</a>
+              <a href={constructUrl(link.id)} target="_blank" rel="noopener noreferrer">
+                {constructUrl(link.id)}
+              </a>
               <br />
               <small>{link.url}</small>
             </li>
