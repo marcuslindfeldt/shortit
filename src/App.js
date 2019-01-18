@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-import Link from './Link'
-import CreateLink from './CreateLink'
+import CreateLink from './CreateLink';
+import ShowUrl from './ShowUrl';
+import LinkList from './LinkList';
+// import Link from './Link';
+import TinyUrls from './TinyUrls';
 
 class App extends Component {
   render() {
     return (
-      <>
-      <CreateLink></CreateLink>
-      <Link />
-      </>
+      <TinyUrls>
+        <>
+          <CreateLink />
+          <ShowUrl />
+          <LinkList />
+        </>
+      </TinyUrls>
     );
   }
 }

@@ -1,6 +1,8 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
+import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+
+import { TinyUrlContext } from './TinyUrls';
 
 const CREATE_LINK_MUTATION = gql`
   mutation createTinyUrlMutation($url: String!) {
@@ -11,15 +13,15 @@ const CREATE_LINK_MUTATION = gql`
   }
 `;
 
-const createLink = mutation => async () => {
+const createLink = (mutation, add) => async () => {
   const res = await mutation();
 
-  console.log(res.data.createTinyUrl);
+  add(res.data.createTinyUrl);
 };
 
 class CreateLink extends Component {
   state = {
-    url: ""
+    url: '',
   };
 
   render() {
@@ -32,9 +34,13 @@ class CreateLink extends Component {
           type="text"
           placeholder="The URL for the link"
         />
-        <Mutation mutation={CREATE_LINK_MUTATION} variables={{ url }}>
-          {mutation => <button onClick={createLink(mutation)}>Shorten</button>}
-        </Mutation>
+        <TinyUrlContext.Consumer>
+          {({ add }) => (
+            <Mutation mutation={CREATE_LINK_MUTATION} variables={{ url }}>
+              {mutation => <button onClick={createLink(mutation, add)}>Shorten</button>}
+            </Mutation>
+          )}
+        </TinyUrlContext.Consumer>
       </div>
     );
   }
