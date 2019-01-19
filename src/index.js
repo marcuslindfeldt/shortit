@@ -5,9 +5,12 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Normalize } from 'styled-normalize';
 
 import TinyUrls from './TinyUrls';
 import App from './App';
+
+import GlobalStyles from './ui/GlobalStyles';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -24,7 +27,11 @@ ReactDOM.render(
   <Router>
     <ApolloProvider client={client}>
       <TinyUrls>
-        <App />
+        <>
+          <Normalize />
+          <GlobalStyles />
+          <App />
+        </>
       </TinyUrls>
     </ApolloProvider>
   </Router>,
