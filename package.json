@@ -5,11 +5,16 @@
   "dependencies": {
     "@stagecraft/react-clippy": "^1.0.1",
     "apollo-boost": "^0.1.23",
+    "apollo-cache-inmemory": "^1.4.2",
+    "apollo-client": "^2.4.12",
+    "apollo-link-http": "^1.5.9",
     "babel-plugin-macros": "^2.4.5",
     "formik": "^1.4.2",
     "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
     "graphql-yoga": "^1.17.0",
     "nodemon": "^1.18.9",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.7.0",
@@ -25,6 +30,9 @@
     "build": "react-scripts build",
     "serve": "node server/",
     "serve:dev": "nodemon server/",
+    "lint": "run-p 'lint:css' 'lint:js'",
+    "lint:css": "stylelint './src/**/*.jsx'",
+    "lint:js": "eslint  -c ./.eslintrc --ext=js --ext=jsx --ignore-path .gitignore .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -36,5 +44,19 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.5.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.3",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "npm-run-all": "^4.1.5",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.2"
+  }
 }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -16,16 +17,20 @@ const redirect = url => {
   return null;
 };
 
-class RedirectUrl extends Component {
-  render() {
-    return (
-      <Query query={TINYURL_QUERY} variables={{ id: this.props.match.params.id }}>
-        {({ loading, error, data }) =>
-          loading || error ? <div>redirecting...</div> : redirect(data.tinyurl.url)
-        }
-      </Query>
-    );
-  }
-}
+const RedirectUrl = ({ match }) => (
+  <Query query={TINYURL_QUERY} variables={{ id: match.params.id }}>
+    {({ loading, error, data }) =>
+      loading || error ? <div>redirecting...</div> : redirect(data.tinyurl.url)
+    }
+  </Query>
+);
+
+RedirectUrl.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default RedirectUrl;

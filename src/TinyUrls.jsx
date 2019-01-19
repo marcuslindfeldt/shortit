@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export const TinyUrlContext = React.createContext();
 
@@ -55,5 +56,9 @@ class TinyUrls extends Component {
     );
   }
 }
+
+TinyUrls.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default TinyUrls;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
@@ -37,8 +37,13 @@ const Button = ({ children, label, ...props }) => (
   </StyledButton>
 );
 
+Button.defaultProps = {
+  children: undefined,
+};
+
 Button.propTypes = {
   label: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 export default Button;

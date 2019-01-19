@@ -4,6 +4,8 @@ import shortid from 'shortid';
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
+/* eslint-disable react/no-unused-state */
+
 class TextAnimation extends Component {
   state = {
     saved: 0,
@@ -16,6 +18,7 @@ class TextAnimation extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.children !== this.props.children) {
+      // eslint-disable-next-line
       this.setState(
         {
           saved: 0,
@@ -64,7 +67,7 @@ class TextAnimation extends Component {
 }
 
 TextAnimation.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
 };
 
 export default TextAnimation;

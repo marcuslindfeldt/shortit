@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -49,47 +49,43 @@ const StyledErrorMessage = styled.span`
   display: block;
 `;
 
-class CreateLink extends Component {
-  render() {
-    return (
-      <TinyUrlContext.Consumer>
-        {({ add }) => (
-          <Mutation mutation={CREATE_LINK_MUTATION}>
-            {mutate => (
-              <Formik
-                initialValues={{ url: '' }}
-                validationSchema={validationSchema}
-                validateOnChange={false}
-                validateOnBlur={false}
-                onSubmit={async (values, { setSubmitting, setFieldValue }) => {
-                  setSubmitting(true);
-                  const res = await mutate({ variables: { url: values.url } });
-                  add(res.data.createTinyUrl);
-                  setFieldValue('url', '');
-                  setSubmitting(false);
-                }}
-                render={({ errors, status, touched, isSubmitting }) => (
-                  <StyledForm noValidate autoComplete="off">
-                    <FormGroup>
-                      <Field
-                        type="url"
-                        name="url"
-                        aria-label="paste link here"
-                        required
-                        render={({ field }) => <Input {...field} placeholder="paste link here*" />}
-                      />
-                      <ErrorMessage component={StyledErrorMessage} name="url" />
-                    </FormGroup>
-                    <Button type="submit" label="Shorten!" disabled={isSubmitting} />
-                  </StyledForm>
-                )}
-              />
+const CreateLink = () => (
+  <TinyUrlContext.Consumer>
+    {({ add }) => (
+      <Mutation mutation={CREATE_LINK_MUTATION}>
+        {mutate => (
+          <Formik
+            initialValues={{ url: '' }}
+            validationSchema={validationSchema}
+            validateOnChange={false}
+            validateOnBlur={false}
+            onSubmit={async (values, { setSubmitting, setFieldValue }) => {
+              setSubmitting(true);
+              const res = await mutate({ variables: { url: values.url } });
+              add(res.data.createTinyUrl);
+              setFieldValue('url', '');
+              setSubmitting(false);
+            }}
+            render={({ isSubmitting }) => (
+              <StyledForm noValidate autoComplete="off">
+                <FormGroup>
+                  <Field
+                    type="url"
+                    name="url"
+                    aria-label="paste link here"
+                    required
+                    render={({ field }) => <Input {...field} placeholder="paste link here*" />}
+                  />
+                  <ErrorMessage component={StyledErrorMessage} name="url" />
+                </FormGroup>
+                <Button type="submit" label="Shorten!" disabled={isSubmitting} />
+              </StyledForm>
             )}
-          </Mutation>
+          />
         )}
-      </TinyUrlContext.Consumer>
-    );
-  }
-}
+      </Mutation>
+    )}
+  </TinyUrlContext.Consumer>
+);
 
 export default CreateLink;

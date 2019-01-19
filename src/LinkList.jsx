@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Clippy from '@stagecraft/react-clippy';
-
+import PropTypes from 'prop-types';
 import { TinyUrlContext } from './TinyUrls';
 
 const List = styled.ul`
@@ -98,6 +98,10 @@ const ShortLink = ({ id }) => (
     )}
   </Clippy>
 );
+
+ShortLink.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 const LinkList = () => (
   <TinyUrlContext.Consumer>
