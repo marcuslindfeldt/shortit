@@ -14,6 +14,7 @@
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
     "graphql-yoga": "^1.17.0",
+    "http-proxy-middleware": "^0.19.1",
     "nodemon": "^1.18.9",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
@@ -27,10 +28,11 @@
     "yup": "^0.26.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/",
+    "start:dev": "nodemon server/",
+    "start:client": "react-scripts start",
     "build": "react-scripts build",
-    "serve": "node server/",
-    "serve:dev": "nodemon server/",
+    "now-build": "react-scripts build && mv build dist",
     "lint": "run-p 'lint:css' 'lint:js'",
     "lint:css": "stylelint './src/**/*.jsx'",
     "lint:js": "eslint  -c ./.eslintrc --ext=js --ext=jsx --ignore-path .gitignore .",

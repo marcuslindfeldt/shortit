@@ -46,11 +46,11 @@ class ShowUrl extends Component {
                 {setTrigger => (
                   <>
                     <StyledLink>
-                      http://localhost:3000/<TextAnimation>{newLink.id}</TextAnimation>
+                      {window.location.origin}/<TextAnimation>{newLink.id}</TextAnimation>
                     </StyledLink>
                     <CopyButton
                       ref={el => setTrigger(el)}
-                      data-clipboard-text={`http://localhost:3000/${newLink.id}`}
+                      data-clipboard-text={`${window.location.origin}/${newLink.id}`}
                     >
                       Copy
                     </CopyButton>

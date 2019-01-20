@@ -88,11 +88,18 @@ const ShortLink = ({ id }) => (
   <Clippy>
     {setTrigger => (
       <>
-        <CopyButton ref={el => setTrigger(el)} data-clipboard-text={`http://localhost:3000/${id}`}>
+        <CopyButton
+          ref={el => setTrigger(el)}
+          data-clipboard-text={`${window.location.origin}/${id}`}
+        >
           Copy
         </CopyButton>
-        <StyledLink href={`http://localhost:3000/${id}`} target="_blank" rel="noopener noreferrer">
-          http://localhost:3000/{id}
+        <StyledLink
+          href={`${window.location.origin}/${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {window.location.origin}/{id}
         </StyledLink>
       </>
     )}

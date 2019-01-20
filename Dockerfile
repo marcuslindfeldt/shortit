@@ -7,13 +7,14 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm ci --dev
 RUN npm audit
 
 COPY . ./
 
 ENV CI=true
 ENV NODE_ENV="production"
+ENV PUBLIC_URL="shortit.now.sh"
 
 RUN npm run lint
 RUN npm run test

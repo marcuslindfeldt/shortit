@@ -17,7 +17,7 @@ import LinkList from './LinkList';
 import logoSrc from './logo.svg';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/api',
+  uri: '/api/',
 });
 
 const client = new ApolloClient({

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
+import InfoView from './InfoView';
 
 const TINYURL_QUERY = gql`
   query TinyUrl($id: ID!) {
@@ -19,9 +21,26 @@ const redirect = url => {
 
 const RedirectUrl = ({ match }) => (
   <Query query={TINYURL_QUERY} variables={{ id: match.params.id }}>
-    {({ loading, error, data }) =>
-      loading || error ? <div>redirecting...</div> : redirect(data.tinyurl.url)
-    }
+    {({ loading, error, data }) => {
+      if (loading) {
+        return <InfoView heading="redirecting..." />;
+      }
+
+      if (error) {
+        return (
+          <InfoView
+            heading="Page not found"
+            description={
+              <>
+                The link you followed does not exist. Go to <Link to="/">homepage</Link>.
+              </>
+            }
+          />
+        );
+      }
+
+      return redirect(data.tinyurl.url);
+    }}
   </Query>
 );
 
