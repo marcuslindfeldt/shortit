@@ -9,7 +9,7 @@ npm install
 ## Client
 
 ```sh
-npm run start
+npm run start:client
 ```
 
 Production build of client:
@@ -21,7 +21,7 @@ npm run build
 ## Server
 
 ```sh
-npm run serve
+npm start
 ```
 
 ## Docker
@@ -42,3 +42,16 @@ npm run lint
 ```
 npm test
 ```
+
+## Deployment
+
+Deploy to now.sh by downloading the now CLI and running `now` from the app root.
+
+```
+npm install -g now
+now
+```
+
+## Demo
+
+[https://shortit.now.sh/](https://shortit.now.sh/)
