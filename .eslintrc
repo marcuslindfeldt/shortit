@@ -9,6 +9,7 @@
   "parser": "babel-eslint",
   "plugins": ["jest", "prettier"],
   "rules": {
+    "import/named": "error",
     "no-restricted-imports": [
       "error",
       {

@@ -7,17 +7,20 @@ import * as Yup from 'yup';
 
 import { TinyUrlContext } from './TinyUrls';
 
-import Input from './ui/Input';
-import Button from './ui/Button';
+import UrlInput from './UrlInput';
+
+import SubmitButton from './SubmitButton';
+
+import { spacingPico, spacingSmall, spacingBase } from './variables';
 
 const FormGroup = styled.div`
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 ${spacingBase};
 `;
 
 const StyledForm = styled(Form)`
   width: 100%;
-  padding: 1rem;
+  padding: ${spacingBase};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,8 +47,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const StyledErrorMessage = styled.span`
-  margin-left: 0.75rem;
-  margin-top: 0.25rem;
+  margin-left: ${spacingSmall};
+  margin-top: ${spacingPico};
   display: block;
 `;
 
@@ -74,11 +77,11 @@ const CreateLink = () => (
                     name="url"
                     aria-label="paste link here"
                     required
-                    render={({ field }) => <Input {...field} placeholder="paste link here*" />}
+                    render={({ field }) => <UrlInput {...field} placeholder="paste link here*" />}
                   />
                   <ErrorMessage component={StyledErrorMessage} name="url" />
                 </FormGroup>
-                <Button type="submit" label="Shorten!" disabled={isSubmitting} />
+                <SubmitButton type="submit" label="Shorten!" disabled={isSubmitting} />
               </StyledForm>
             )}
           />

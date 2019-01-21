@@ -3,30 +3,31 @@ import styled from 'styled-components/macro';
 import Clippy from '@stagecraft/react-clippy';
 
 import { TinyUrlContext } from './TinyUrls';
-import TextAnimation from './ui/TextAnimation';
+import TextAnimation from './TextAnimation';
+import { colorBlack, colorWhite, spacingBase, spacingXXL } from './variables';
 
 const Layout = styled.div`
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: ${spacingBase};
   width: 100%;
 `;
 
 const StyledLink = styled.p`
   font-family: Merriweather, serif;
-  color: #000;
+  color: ${colorBlack};
   margin: 0;
   text-decoration: none;
-  margin-bottom: 1rem;
+  margin-bottom: ${spacingBase};
 `;
 
 const CopyButton = styled.button`
-  background: #000;
+  background: ${colorBlack};
   border: 0;
   min-width: 7rem;
-  min-height: 3rem;
+  min-height: ${spacingXXL};
   font-weight: 600;
   text-transform: uppercase;
-  color: #fff;
+  color: ${colorWhite};
   cursor: pointer;
 
   :focus {

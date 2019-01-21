@@ -2,19 +2,34 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Clippy from '@stagecraft/react-clippy';
 import PropTypes from 'prop-types';
+import { rgba } from 'polished';
 import { TinyUrlContext } from './TinyUrls';
+
+import {
+  colorPrimary,
+  colorWhite,
+  colorGrey,
+  colorBlack,
+  spacingPico,
+  spacingTiny,
+  spacingBase,
+  spacingLarge,
+  spacingXL,
+  spacingXXL,
+  ms,
+} from './variables';
 
 const List = styled.ul`
   margin: 0;
 
-  padding: 1.5rem;
-  background: #fff;
+  padding: ${spacingLarge};
+  background: ${colorWhite};
   width: 100%;
   min-height: 16rem;
 
   @media (min-width: 44rem) {
-    margin-top: 2rem;
-    padding: 3rem;
+    margin-top: ${spacingXL};
+    padding: ${spacingXXL};
     box-shadow: 0px 3px 12px -3px rgba(0, 0, 0, 0.2);
     max-width: 40rem;
   }
@@ -23,19 +38,19 @@ const List = styled.ul`
 const ListItem = styled.li`
   display: block;
   list-style-type: none;
-  font-size: 20px;
+  font-size: ${ms(1)};
 
   & + & {
-    margin-top: 1.5rem;
+    margin-top: ${spacingLarge};
   }
 `;
 
 const StyledLink = styled.a`
-  font-size: 13px;
-  color: #ffad38;
+  font-size: ${ms(-1)};
+  color: ${colorPrimary};
   margin: 0;
   text-decoration: none;
-  margin-right: 1rem;
+  margin-right: ${spacingBase};
 
   :hover,
   :focus {
@@ -45,10 +60,10 @@ const StyledLink = styled.a`
 `;
 
 const ExternalLink = styled.a`
-  font-size: 20px;
+  font-size: ${ms(1)};
   display: block;
   text-decoration: none;
-  color: #666;
+  color: ${colorGrey};
   font-weight: 300;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -57,29 +72,29 @@ const ExternalLink = styled.a`
   :hover,
   :focus {
     outline: 0;
-    color: #000;
+    color: ${colorBlack};
   }
 `;
 
 const CopyButton = styled.button`
-  font-size: 12px;
+  font-size: ${ms(-2)};
   line-height: 1;
-  padding: 4px 8px;
+  padding: ${spacingPico} ${spacingTiny};
   font-weight: 600;
-  background: #ffda38;
+  background: ${colorPrimary};
   border: 0;
-  color: #fff;
+  color: ${colorWhite};
   text-transform: uppercase;
   cursor: pointer;
   transition: all 100ms ease-in-out;
-  box-shadow: 0 3px 8px -2px rgba(255, 218, 56, 0.3);
+  box-shadow: 0 3px 8px -2px ${rgba(colorPrimary, 0.3)};
   min-width: 70px;
-  margin-right: 1rem;
+  margin-right: ${spacingBase};
 
   :hover,
   :focus {
     outline: 0;
-    box-shadow: 0 3px 8px -2px rgba(255, 218, 56, 0.7);
+    box-shadow: 0 3px 8px -2px ${rgba(colorPrimary, 0.7)};
     transform: translateY(-1px) scale(1.05);
   }
 `;
@@ -112,22 +127,20 @@ ShortLink.propTypes = {
 
 const LinkList = () => (
   <TinyUrlContext.Consumer>
-    {({ recentLinks }) => (
-      <List>
-        {!recentLinks.length ? (
-          <ListItem />
-        ) : (
-          recentLinks.map(link => (
+    {({ recentLinks }) =>
+      recentLinks.length > 0 && (
+        <List>
+          {recentLinks.map(link => (
             <ListItem key={link.id}>
               <ExternalLink href={link.url} target="_blank" rel="noopener noreferrer">
                 {link.url}
               </ExternalLink>
               <ShortLink id={link.id} />
             </ListItem>
-          ))
-        )}
-      </List>
-    )}
+          ))}
+        </List>
+      )
+    }
   </TinyUrlContext.Consumer>
 );
 

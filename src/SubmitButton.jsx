@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { colorBlack, ms, spacingBase, spacingXL } from './variables';
 
 const StyledButton = styled.button`
   background: none;
   border: 0;
   font-weight: 700;
-  color: #000;
-  margin-top: 1rem;
+  color: ${colorBlack};
+  margin-top: ${spacingBase};
   cursor: pointer;
-  font-size: 40px;
+  font-size: ${ms(5)};
   font-family: Merriweather, serif;
   transition: transform 50ms ease-in-out;
 
   :hover,
   :focus {
     outline: 0;
-    transform: translateY(-4px) scale(1.1);
+    transform: scale(1.1);
   }
 
   :disabled {
@@ -25,25 +26,26 @@ const StyledButton = styled.button`
   }
 
   @media (min-width: 44rem) {
+    margin: 0;
     position: absolute;
-    right: 2rem;
+    right: ${spacingXL};
     top: 0;
   }
 `;
 
-const Button = ({ children, label, ...props }) => (
+const SubmitButton = ({ children, label, ...props }) => (
   <StyledButton aria-label={label} {...props}>
     {children || label}
   </StyledButton>
 );
 
-Button.defaultProps = {
+SubmitButton.defaultProps = {
   children: undefined,
 };
 
-Button.propTypes = {
+SubmitButton.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
 
-export default Button;
+export default SubmitButton;

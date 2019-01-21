@@ -23,10 +23,10 @@ const RedirectUrl = ({ match }) => (
   <Query query={TINYURL_QUERY} variables={{ id: match.params.id }}>
     {({ loading, error, data }) => {
       if (loading) {
-        return <InfoView heading="redirecting..." />;
+        return null;
       }
 
-      if (error) {
+      if (error || !data.tinyurl) {
         return (
           <InfoView
             heading="Page not found"

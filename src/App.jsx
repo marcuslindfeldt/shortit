@@ -8,11 +8,13 @@ import { Normalize } from 'styled-normalize';
 import styled from 'styled-components/macro';
 
 import TinyUrls from './TinyUrls';
-import GlobalStyles from './ui/GlobalStyles';
+import GlobalStyles from './GlobalStyles';
 import RedirectUrl from './RedirectUrl';
 import CreateLink from './CreateLink';
 import ShowUrl from './ShowUrl';
 import LinkList from './LinkList';
+
+import { colorPrimary, spacingBase } from './variables';
 
 import logoSrc from './logo.svg';
 
@@ -36,10 +38,10 @@ const AppLayout = styled.div`
     content: '';
     position: absolute;
     z-index: -1;
-    background: #ffda38;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
+    background: ${colorPrimary};
+    top: ${spacingBase};
+    left: ${spacingBase};
+    right: ${spacingBase};
     height: 25rem;
   }
 `;

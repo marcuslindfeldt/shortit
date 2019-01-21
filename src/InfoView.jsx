@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import { colorBlack, ms, spacingBase } from './variables';
 
 const CenterLayout = styled.section`
   height: 100vh;
   width: 100vw;
-  padding: 1rem;
+  padding: ${spacingBase};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,8 +15,8 @@ const CenterLayout = styled.section`
 
 const InfoHeading = styled.h1`
   font-weight: 700;
-  color: #000;
-  font-size: 40px;
+  color: ${colorBlack};
+  font-size: ${ms(5)};
   margin: 0;
   font-family: Merriweather, serif;
 `;
@@ -23,8 +24,8 @@ const InfoHeading = styled.h1`
 const InfoDescription = styled.p`
   margin: 0;
   font-weight: 500;
-  color: #000;
-  font-size: 20px;
+  color: ${colorBlack};
+  font-size: ${ms(1)};
   font-family: Merriweather, serif;
 `;
 
