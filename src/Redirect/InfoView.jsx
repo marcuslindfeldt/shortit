@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import { colorBlack, ms, spacingBase } from './variables';
+
+import { colorBlack, ms, spacingBase } from '../variables';
 
 const CenterLayout = styled.section`
   height: 100vh;
@@ -16,7 +17,7 @@ const CenterLayout = styled.section`
 const InfoHeading = styled.h1`
   font-weight: 700;
   color: ${colorBlack};
-  font-size: ${ms(5)};
+  font-size: ${ms(4)};
   margin: 0;
   font-family: Merriweather, serif;
 `;

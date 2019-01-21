@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import Clippy from '@stagecraft/react-clippy';
 
-import { TinyUrlContext } from './TinyUrls';
+import { TinyUrlContext } from '../TinyUrls';
 import TextAnimation from './TextAnimation';
-import { colorBlack, colorWhite, spacingBase, spacingXXL } from './variables';
+
+import { colorBlack, colorWhite, spacingBase, spacingXXL } from '../variables';
 
 const Layout = styled.div`
   text-align: center;
   margin-bottom: ${spacingBase};
   width: 100%;
 `;
-
 const StyledLink = styled.p`
   font-family: Merriweather, serif;
   color: ${colorBlack};

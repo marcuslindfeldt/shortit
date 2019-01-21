@@ -9,10 +9,10 @@ import styled from 'styled-components/macro';
 
 import TinyUrls from './TinyUrls';
 import GlobalStyles from './GlobalStyles';
-import RedirectUrl from './RedirectUrl';
-import CreateLink from './CreateLink';
-import ShowUrl from './ShowUrl';
-import LinkList from './LinkList';
+import RedirectUrl from './Redirect/RedirectUrl';
+import CreateLink from './NewLink/CreateLink';
+import ShowUrl from './NewLink/ShowUrl';
+import RecentLinks from './NewLink/RecentLinks';
 
 import { colorPrimary, spacingBase } from './variables';
 
@@ -73,7 +73,7 @@ const App = () => (
                 </Logo>
                 <CreateLink />
                 <ShowUrl />
-                <LinkList />
+                <RecentLinks />
               </AppLayout>
             </Route>
             <Route path="/:id" component={RedirectUrl} />

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
-import { colorBlack, ms, spacingBase, spacingXL } from './variables';
+
+import { colorBlack, ms, spacingBase, spacingXL } from '../variables';
 
 const StyledButton = styled.button`
   background: none;

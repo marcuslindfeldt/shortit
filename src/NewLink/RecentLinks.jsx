@@ -3,7 +3,8 @@ import styled from 'styled-components/macro';
 import Clippy from '@stagecraft/react-clippy';
 import PropTypes from 'prop-types';
 import { rgba } from 'polished';
-import { TinyUrlContext } from './TinyUrls';
+
+import { TinyUrlContext } from '../TinyUrls';
 
 import {
   colorPrimary,
@@ -17,7 +18,7 @@ import {
   spacingXL,
   spacingXXL,
   ms,
-} from './variables';
+} from '../variables';
 
 const List = styled.ul`
   margin: 0;
@@ -125,23 +126,22 @@ ShortLink.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-const LinkList = () => (
+export const LinkList = ({ links }) =>
+  links.length > 0 && (
+    <List>
+      {links.map(link => (
+        <ListItem key={link.id}>
+          <ExternalLink href={link.url} target="_blank" rel="noopener noreferrer">
+            {link.url}
+          </ExternalLink>
+          <ShortLink id={link.id} />
+        </ListItem>
+      ))}
+    </List>
+  );
+
+export default () => (
   <TinyUrlContext.Consumer>
-    {({ recentLinks }) =>
-      recentLinks.length > 0 && (
-        <List>
-          {recentLinks.map(link => (
-            <ListItem key={link.id}>
-              <ExternalLink href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.url}
-              </ExternalLink>
-              <ShortLink id={link.id} />
-            </ListItem>
-          ))}
-        </List>
-      )
-    }
+    {({ recentLinks }) => <LinkList links={recentLinks} />}
   </TinyUrlContext.Consumer>
 );
-
-export default LinkList;

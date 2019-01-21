@@ -5,13 +5,13 @@ import styled from 'styled-components/macro';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { TinyUrlContext } from './TinyUrls';
+import { TinyUrlContext } from '../TinyUrls';
 
 import UrlInput from './UrlInput';
 
 import SubmitButton from './SubmitButton';
 
-import { spacingPico, spacingSmall, spacingBase } from './variables';
+import { spacingPico, spacingSmall, spacingBase } from '../variables';
 
 const FormGroup = styled.div`
   width: 100%;

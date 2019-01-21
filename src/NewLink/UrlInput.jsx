@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { colorDarkGrey, colorBlack, spacingXXL, spacingSmall } from './variables';
+
+import { colorDarkGrey, colorBlack, spacingXXL, spacingSmall } from '../variables';
 
 const StyledInput = styled.input`
   font-family: Merriweather, serif;
