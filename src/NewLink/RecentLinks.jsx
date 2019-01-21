@@ -126,9 +126,9 @@ ShortLink.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export const LinkList = ({ links }) =>
+export const LinkList = ({ links = [] }) =>
   links.length > 0 && (
-    <List>
+    <List data-testid="link-list">
       {links.map(link => (
         <ListItem key={link.id}>
           <ExternalLink href={link.url} target="_blank" rel="noopener noreferrer">
